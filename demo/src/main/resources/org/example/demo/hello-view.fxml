@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="368.0" prefWidth="466.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <TableView fx:id="datosTableView" prefHeight="246.0" prefWidth="591.0">
+     <columns>
+       <TableColumn fx:id="niaTableColumn" prefWidth="75.0" text="NIA" />
+       <TableColumn fx:id="nombreTableColumn" prefWidth="149.0" text="Nombre" />
+         <TableColumn fx:id="fechaNacimientoTableColumn" prefWidth="201.0" text="Fecha nacimiento" />
+     </columns>
+   </TableView>
+
+    <Label fx:id="welcomeText" />
+   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+          <Button fx:id="button1" onAction="#editButton" text="Editar" />
+         <Button fx:id="button2" mnemonicParsing="false" onAction="#deleteButton" text="Eliminar" />
+      </children>
+   </HBox>
+   <Label fx:id="TextoLabel" text="Label" />
+   <TextField fx:id="niaTextField" promptText="Introduce un NIA..." />
+   <TextField fx:id="nameTextField" promptText="Introduce un nombre..." />
+   <DatePicker fx:id="fechaPicker" promptText="Fecha de nacimiento..." />
+   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Button fx:id="button3" mnemonicParsing="false" onAction="#insertButton" text="Insertar" />
+         <Button fx:id="button4" disable="true" mnemonicParsing="false" onAction="#keepButton" text="Guardar" />
+      </children>
+   </HBox>
+</VBox>
