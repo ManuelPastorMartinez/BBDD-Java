@@ -3,71 +3,55 @@ package org.example.demo;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class HelloController {
-    public TableColumn fechaNacimientoTableColumn;
-    public Button button1;
-    public Button button2;
+
+    public TableView<Estudiante> estudiantesTableView;
+    public TableColumn<Estudiante,Integer> niaTableColumn;
+    public TableColumn<Estudiante,String> nombreTableColumn;
+    public TableColumn<Estudiante,LocalDate> fechaNacimientoTableColumn;
     public Label TextoLabel;
-    public TextField niaLabel;
-    public TextField nameLabel;
+    public TextField niaTextField;
+    public TextField nameTextField;
     public DatePicker fechaPicker;
-    public Button button3;
-    public Button button4;
-    @FXML
-    private Label welcomeText;
+    public Button insertarButtonId;
+    public Button guardarButtonId;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    public void initialize(){
 
-    @FXML
-    private TableView<Persona> datosTableView;
-
-    @FXML
-    private TableColumn<Persona,Integer> niaTableColumn;
-
-    @FXML
-    private TableColumn<Persona,String > nombreTableColumn;
-
-    @FXML
-    private TableColumn<Persona, LocalDate> fechaTableColumn;
-
-    @FXML
-    private void inicialize(){
         niaTableColumn.setCellValueFactory(datos-> new SimpleIntegerProperty(datos.getValue().getNia()).asObject());
-        nombreTableColumn.setCellValueFactory(datos->new SimpleStringProperty(datos.getValue().getNombre()));
-        fechaTableColumn.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getFecha_nacimiento()));
+        nombreTableColumn.setCellValueFactory(datos-> new SimpleStringProperty(datos.getValue().getNombre()));
+        fechaNacimientoTableColumn.setCellValueFactory(datos-> new ReadOnlyObjectWrapper<>(datos.getValue().getFecha_nacimiento()));
+
+        //estudiantesTableView.setItems();
     }
 
-
-    public void editButton(){
-
-    }
-
-    public void deleteButton(){
+    public void editarButton() {
 
     }
 
-    public void insertButton(){
+    public void borrarButton() {
+
+    }
+
+    public void insertarButton() {
         Integer nia = Integer.parseInt(niaTableColumn.getText());
         String nombre = nombreTableColumn.getText();
         LocalDate fecha = fechaPicker.getValue();
 
-        Persona persona = new Persona(nia,nombre,fecha);
-        DatosPersonas.insertarPersona(persona);
-        niaLabel.clear();
-        nameLabel.clear();
-
+        Estudiante estudiante = new Estudiante(nia,nombre,fecha);
+        DatosPersonas.insertarEstudiante(estudiante);
+        niaTextField.clear();
+        nameTextField.clear();
     }
 
-    public void keepButton(){
+    public void guardarButton() {
 
     }
 }

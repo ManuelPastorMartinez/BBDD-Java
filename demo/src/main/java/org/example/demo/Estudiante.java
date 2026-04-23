@@ -1,14 +1,13 @@
 package org.example.demo;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-public class Persona {
+public class Estudiante {
     private Integer nia;
     private String nombre;
     private LocalDate fecha_nacimiento;
 
-    public Persona(Integer nia, String nombre, LocalDate fecha_nacimiento){
+    public Estudiante(Integer nia, String nombre, LocalDate fecha_nacimiento){
         this.nia=nia;
         this.nombre=nombre;
         this.fecha_nacimiento=fecha_nacimiento;
