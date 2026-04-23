@@ -4,17 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Main {
+public class Datos {
     public static void main(String[] args) {
+
         Connection bd = conexion();
+        System.out.println("Realizando consultas...");
+        desconectar(bd);
+
     }
 
     public static Connection conexion() {
         Connection conexion;
         String host = "jdbc:mariadb://localhost:3310/";
-        String user ="root";
+        String user = "root";
         String psw = "";
-        String bd = "prueba";
+        String bd = "instituto";
         System.out.println("Conectando...");
 
         try {
@@ -40,4 +44,5 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+
 }

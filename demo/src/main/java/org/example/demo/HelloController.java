@@ -3,13 +3,15 @@ package org.example.demo;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 
 public class HelloController {
+
+    static Connection conexion;
 
     public TableView<Estudiante> estudiantesTableView;
     public TableColumn<Estudiante,Integer> niaTableColumn;
@@ -24,6 +26,9 @@ public class HelloController {
 
     @FXML
     public void initialize(){
+
+        conexion = Datos.conexion();
+
 
         niaTableColumn.setCellValueFactory(datos-> new SimpleIntegerProperty(datos.getValue().getNia()).asObject());
         nombreTableColumn.setCellValueFactory(datos-> new SimpleStringProperty(datos.getValue().getNombre()));
