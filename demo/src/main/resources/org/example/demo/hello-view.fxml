@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="boxId" alignment="CENTER" prefHeight="528.0" prefWidth="867.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
+<VBox fx:id="boxId" alignment="CENTER" prefHeight="641.0" prefWidth="867.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <TableView fx:id="estudiantesTableView" prefHeight="76.0" prefWidth="515.0">
+   <TableView fx:id="estudiantesTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="753.0" prefWidth="827.0">
      <columns>
        <TableColumn fx:id="niaTableColumn" prefWidth="173.0" text="NIA" />
        <TableColumn fx:id="nombreTableColumn" prefWidth="169.0" text="Nombre" />

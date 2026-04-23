@@ -34,7 +34,7 @@ public class HelloController {
         nombreTableColumn.setCellValueFactory(datos-> new SimpleStringProperty(datos.getValue().getNombre()));
         fechaNacimientoTableColumn.setCellValueFactory(datos-> new ReadOnlyObjectWrapper<>(datos.getValue().getFecha_nacimiento()));
 
-        //estudiantesTableView.setItems();
+        estudiantesTableView.setItems(Datos.consulta(conexion));
     }
 
     public void editarButton() {
@@ -42,7 +42,14 @@ public class HelloController {
     }
 
     public void borrarButton() {
+        Estudiante seleccionado = estudiantesTableView.getSelectionModel().getSelectedItem();
 
+        if (seleccionado != null){
+
+        }else {
+
+            Datos.eliminar(conexion, seleccionado);
+        }
     }
 
     public void insertarButton() {
