@@ -34,13 +34,17 @@ public class Datos {
         return conexion;
     }
 
+    public static void editar(Connection conexion, Estudiante estudiante){
+
+    }
+
     public static void eliminar(Connection conexion, Estudiante estudiante){
 
         System.out.println("Eliminando...");
 
 
 
-        String query = "DELETE FROM estudiante WHERE nia = ";
+        String query = "DELETE FROM estudiante WHERE nia = '"+estudiante.getNia()+ "'";
 
         Statement stmt;
 

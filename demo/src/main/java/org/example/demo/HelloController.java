@@ -17,7 +17,7 @@ public class HelloController {
     public TableColumn<Estudiante,Integer> niaTableColumn;
     public TableColumn<Estudiante,String> nombreTableColumn;
     public TableColumn<Estudiante,LocalDate> fechaNacimientoTableColumn;
-    public Label TextoLabel;
+    public Label mensajeLabel;
     public TextField niaTextField;
     public TextField nameTextField;
     public DatePicker fechaPicker;
@@ -39,17 +39,33 @@ public class HelloController {
 
     public void editarButton() {
 
+        Estudiante seleccionado = estudiantesTableView.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null){
+            mensajeLabel.setText("No hay nada seleccionado");
+        }else {
+            insertarButtonId.setDisable(true);
+            guardarButtonId.setDisable(false);
+            niaTextField.setText(seleccionado.getNia().toString());
+            nameTextField.setText(seleccionado.getNombre());
+            fechaPicker.setValue(seleccionado.getFecha_nacimiento());
+
+            mensajeLabel.setText("Estudiante modificado");
+        }
     }
 
     public void borrarButton() {
         Estudiante seleccionado = estudiantesTableView.getSelectionModel().getSelectedItem();
 
-        if (seleccionado != null){
-
+        if (seleccionado == null){
+            mensajeLabel.setText("No hay nada seleccionado");
         }else {
-
             Datos.eliminar(conexion, seleccionado);
+            mensajeLabel.setText("Estudiante borrado.");
         }
+
+        estudiantesTableView.setItems(Datos.consulta(conexion));
+
     }
 
     public void insertarButton() {
