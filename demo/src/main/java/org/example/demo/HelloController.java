@@ -46,6 +46,7 @@ public class HelloController {
         }else {
             insertarButtonId.setDisable(true);
             guardarButtonId.setDisable(false);
+            niaTextField.setDisable(true);
             niaTextField.setText(seleccionado.getNia().toString());
             nameTextField.setText(seleccionado.getNombre());
             fechaPicker.setValue(seleccionado.getFecha_nacimiento());
@@ -69,9 +70,10 @@ public class HelloController {
     }
 
     public void insertarButton() {
-        Integer nia = Integer.parseInt(niaTableColumn.getText());
-        String nombre = nombreTableColumn.getText();
-        LocalDate fecha = fechaPicker.getValue();
+        Integer nia = Integer.parseInt(niaTextField.getText());
+        String nombre = nameTextField.getText();
+        LocalDate fecha_nacimiento = fechaPicker.getValue();
+        Datos.insertar(conexion,new Estudiante(nia,nombre,fecha_nacimiento));
 
         Estudiante estudiante = new Estudiante(nia,nombre,fecha);
         DatosPersonas.insertarEstudiante(estudiante);
@@ -80,6 +82,22 @@ public class HelloController {
     }
 
     public void guardarButton() {
+
+        Integer nia = Integer.parseInt(niaTextField.getText());
+        String nombre = nameTextField.getText();
+        LocalDate fecha_nacimiento = fechaPicker.getValue();
+        Datos.modificar(conexion,new Estudiante(nia,nombre,fecha_nacimiento));
+
+        insertarButtonId.setDisable(false);
+        guardarButtonId.setDisable(true);
+        niaTextField.clear();
+        nameTextField.clear();
+        niaTextField.setDisable(false);
+        fechaPicker.setValue(null);
+
+        estudiantesTableView.setItems(Datos.consulta(conexion));
+
+
 
     }
 }

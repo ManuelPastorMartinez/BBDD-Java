@@ -34,8 +34,42 @@ public class Datos {
         return conexion;
     }
 
-    public static void editar(Connection conexion, Estudiante estudiante){
 
+    public static void insertar(Connection conexion, Estudiante estudiante){
+        System.out.println("Insertando...");
+
+        String query =" INSERT INTO estudiantes (nia, nombre, fecha_nacimiento) VALUES (12345678, 'Pedro', '2010-04-28');";
+
+        Statement statement;
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void modificar(Connection conexion, Estudiante estudiante){
+        System.out.println("Modificando...");
+
+        String query = "UPDATE estudiante SET nia = '"+estudiante.getNia()+"', "+"nombre = '"+estudiante.getNombre()+" '"+"' WHERE nia = '"+estudiante.getNia()+"'";
+
+        Statement statement;
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     public static void eliminar(Connection conexion, Estudiante estudiante){
